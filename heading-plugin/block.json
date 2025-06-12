@@ -1,0 +1,17 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 2,
+    "name": "heading-block/heading",
+    "version": "1.0.0",
+    "title": "Custom Heading",
+    "category": "common",
+    "icon": "heading",
+    "description": "A custom heading block for Gutenberg editor",
+    "supports": {
+        "html": false
+    },
+    "textdomain": "heading-block",
+    "editorScript": "file:../../build/index.js",
+    "editorStyle": "file:../../build/css/heading-block.css",
+    "style": "file:../../build/css/heading-block.css"
+} 
