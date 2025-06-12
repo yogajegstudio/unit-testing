@@ -1,4 +1,5 @@
-<?php/**
+<?php
+/**
  * Plugin Name: Gutenverse
  * Description: Collection of easy to use and customizable blocks for WordPress Block Editor. Build a great website using block provided with Gutenverse.
  * Plugin URI: https://gutenverse.com/
