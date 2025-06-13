@@ -24,6 +24,8 @@
         <exclude name="WordPress.WhiteSpace.OperatorSpacing.NoSpaceAfter"/>
         <exclude name="WordPress.WP.EnqueuedResourceParameters.MissingVersion"/>
         <exclude name="WordPress.WP.EnqueuedResourceParameters.NotInFooter"/>
+        <exclude name="Squiz.Commenting.FileComment.MissingPackageTag"/>
+        <exclude name="Squiz.Commenting.InlineComment.InvalidEndChar"/>
     </rule>
 
     <!-- Allow short array syntax -->
@@ -43,6 +45,11 @@
 
     <!-- Allow array spacing -->
     <rule ref="NormalizedArrays.Arrays.ArrayBraceSpacing">
+        <severity>0</severity>
+    </rule>
+
+    <!-- Allow function call spacing -->
+    <rule ref="PEAR.Functions.FunctionCallSignature">
         <severity>0</severity>
     </rule>
 </ruleset> 
