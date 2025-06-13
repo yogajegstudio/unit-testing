@@ -25,28 +25,15 @@ jobs:
         run: |
           composer install --no-interaction --prefer-dist --verbose
 
-      - name: Debug PHPCS Installation
-        run: |
-          which phpcs
-          phpcs --version
-          phpcs -i
-          ls -la vendor/bin/
-          ls -la vendor/wp-coding-standards/
-
       - name: Install WordPress Coding Standards
         run: |
           composer require --dev wp-coding-standards/wpcs
           phpcs --config-set installed_paths vendor/wp-coding-standards/wpcs
           phpcs --config-set default_standard WordPress
 
-      - name: Debug PHPCS Configuration
-        run: |
-          phpcs --config-show
-          phpcs -i
-
       - name: Run PHPCS
         run: |
-          phpcs --standard=WordPress --ignore=vendor/*,node_modules/* . --report=full --report-width=120
+          phpcs --standard=.phpcs.xml --report=full --report-width=120 --colors
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -59,9 +46,9 @@ jobs:
 
       - name: Run ESLint (JS)
         run: |
-          npx eslint 'src/**/*.js' --format stylish
+          npx eslint 'src/**/*.js' --format stylish --max-warnings 0
 
       - name: Run stylelint (CSS/SCSS)
         run: |
           echo "Running stylelint with debug info..."
-          npx stylelint 'src/**/*.{css,scss}' --formatter verbose 
+          npx stylelint 'src/**/*.{css,scss}' --formatter verbose --max-warnings 0 
