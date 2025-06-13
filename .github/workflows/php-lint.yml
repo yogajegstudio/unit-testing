@@ -1,0 +1,72 @@
+name: WordPress PHP, JS, and CSS Lint
+
+on: push
+
+jobs:
+  lint:
+    name: Lint Codebase
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.0'
+          tools: phpcs, phpcbf
+          extensions: mbstring, xml
+
+      - name: Allow Composer Plugin
+        run: |
+          composer config --no-plugins allow-plugins.dealerdirect/phpcodesniffer-composer-installer true
+
+      - name: Install Composer dependencies
+        run: |
+          composer install --no-interaction --prefer-dist --verbose
+
+      - name: Debug PHPCS Installation
+        run: |
+          which phpcs
+          phpcs --version
+          phpcs -i
+          ls -la vendor/bin/
+          ls -la vendor/wp-coding-standards/
+
+      - name: Install WordPress Coding Standards
+        run: |
+          composer require --dev wp-coding-standards/wpcs
+          phpcs --config-set installed_paths vendor/wp-coding-standards/wpcs
+          phpcs --config-set default_standard WordPress
+
+      - name: Debug PHPCS Configuration
+        run: |
+          phpcs --config-show
+          phpcs -i
+
+      - name: Run PHPCS
+        run: |
+          phpcs --standard=WordPress --ignore=vendor/*,node_modules/* . --report=full --report-width=120 || true
+          echo "PHPCS found coding standard violations. Please check the report above."
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install JS/CSS linters
+        run: |
+          npm install --no-save eslint stylelint stylelint-config-standard-scss
+
+      - name: Run ESLint (JS)
+        run: |
+          npx eslint '**/*.js' --format stylish || true
+          echo "ESLint found code style violations. Please check the report above."
+
+      - name: Run stylelint (CSS/SCSS)
+        run: |
+          echo "Searching for CSS/SCSS files..."
+          find . -name "*.css" -o -name "*.scss" -not -path "*/node_modules/*" -not -path "*/vendor/*"
+          echo "Running stylelint..."
+          npx stylelint '**/*.{css,scss}' --allow-empty-input || true
+          echo "Stylelint check completed." 
