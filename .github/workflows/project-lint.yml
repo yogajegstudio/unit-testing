@@ -23,11 +23,13 @@ jobs:
 
       - name: Install Composer dependencies
         run: |
+          composer require --dev wp-coding-standards/wpcs:^3.0
+          composer require --dev phpcsstandards/phpcsutils:^1.0
+          composer require --dev phpcsstandards/phpcsextra:^1.0
           composer install --no-interaction --prefer-dist --verbose
 
       - name: Install WordPress Coding Standards
         run: |
-          composer require --dev wp-coding-standards/wpcs
           phpcs --config-set installed_paths vendor/wp-coding-standards/wpcs
 
       - name: Run PHPCS
