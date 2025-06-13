@@ -23,7 +23,7 @@ jobs:
 
       - name: Install Composer dependencies
         run: |
-          composer install --no-interaction --prefer-dist || true
+          composer install --no-interaction --prefer-dist
 
       - name: Install WordPress Coding Standards
         run: |
