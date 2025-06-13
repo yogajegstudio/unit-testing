@@ -1,6 +1,7 @@
-import { registerBlockType } from '@wordpress/blocks';
-import { useBlockProps, RichText } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
+import { registerBlockType } from '@wordpress/blocks';
+import HeadingEdit from './components/HeadingEdit';
+import HeadingSave from './components/HeadingSave';
 
 registerBlockType('heading-block/heading', {
     title: __('Custom Heading', 'heading-block'),
@@ -10,39 +11,13 @@ registerBlockType('heading-block/heading', {
         content: {
             type: 'string',
             source: 'html',
-            selector: 'h2'
+            selector: 'h2',
         },
         level: {
             type: 'number',
-            default: 2
-        }
+            default: 2,
+        },
     },
-    edit: ({ attributes, setAttributes }) => {
-        const blockProps = useBlockProps();
-        const { content, level } = attributes;
-
-        return (
-            <div {...blockProps}>
-                <RichText
-                    tagName={`h${level}`}
-                    value={content}
-                    onChange={(content) => setAttributes({ content })}
-                    placeholder={__('Enter heading text...', 'heading-block')}
-                />
-            </div>
-        );
-    },
-    save: ({ attributes }) => {
-        const blockProps = useBlockProps.save();
-        const { content, level } = attributes;
-
-        return (
-            <div {...blockProps}>
-                <RichText.Content
-                    tagName={`h${level}`}
-                    value={content}
-                />
-            </div>
-        );
-    }
+    edit: HeadingEdit,
+    save: HeadingSave,
 }); 
