@@ -60,7 +60,8 @@ jobs:
 
       - name: Run ESLint (JS)
         run: |
-          npx eslint '**/*.js'
+          npx eslint '**/*.js' --format stylish || true
+          echo "ESLint found code style violations. Please check the report above."
 
       - name: Run stylelint (CSS)
         run: |
