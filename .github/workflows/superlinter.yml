@@ -23,6 +23,7 @@ jobs:
           # PHP Configuration
           PHP_CS_WORDPRESS: true
           PHP_CS_FIXER: true
+          PHP_CS_CONFIG_FILE: .phpcs.xml
           # Disable all other linters
           ENABLE_ANSIBLE: false
           ENABLE_ARM: false
