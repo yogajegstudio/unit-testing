@@ -63,10 +63,17 @@ jobs:
           npx eslint '**/*.js' --format stylish || true
           echo "ESLint found code style violations. Please check the report above."
 
+      - name: Debug SCSS Files
+        run: |
+          echo "Current directory:"
+          pwd
+          echo "Listing all SCSS files:"
+          find . -name "*.scss" -type f
+          echo "Checking specific file:"
+          ls -la src/scss/heading-block.scss || echo "File not found"
+
       - name: Run stylelint (CSS/SCSS)
         run: |
-          echo "Searching for CSS/SCSS files..."
-          find . -name "*.css" -o -name "*.scss" -not -path "*/node_modules/*" -not -path "*/vendor/*"
-          echo "Running stylelint..."
-          npx stylelint '**/*.{css,scss}' --allow-empty-input || true
+          echo "Running stylelint with debug info..."
+          npx stylelint 'src/**/*.{css,scss}' --allow-empty-input --formatter verbose || true
           echo "Stylelint check completed." 
