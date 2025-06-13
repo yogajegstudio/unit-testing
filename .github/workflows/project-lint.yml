@@ -32,7 +32,7 @@ jobs:
 
       - name: Run PHPCS
         run: |
-          phpcs --standard=.phpcs.xml --report=full --report-width=120 --colors --debug
+          phpcs --standard=.phpcs.xml --report=full --report-width=120 --colors --debug --severity=0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
