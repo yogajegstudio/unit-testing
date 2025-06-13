@@ -1,28 +1,37 @@
 {
+  "root": true,
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:@wordpress/eslint-plugin/recommended"
+  ],
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "requireConfigFile": false,
+    "ecmaVersion": 2021,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
   "env": {
     "browser": true,
-    "es2021": true,
-    "node": true
+    "es6": true,
+    "jquery": true
   },
-  "extends": [
-    "eslint:recommended"
+  "plugins": [
+    "react",
+    "react-hooks",
+    "@wordpress"
   ],
-  "parserOptions": {
-    "ecmaVersion": 2021,
-    "sourceType": "module"
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
   },
   "rules": {
-    "semi": ["error", "always"],
-    "no-unused-vars": "error",
-    "no-undef": "error",
-    "comma-dangle": ["error", "always-multiline"],
-    "object-curly-spacing": ["error", "always"],
-    "array-bracket-spacing": ["error", "always"],
-    "no-extra-semi": "error",
-    "no-multiple-empty-lines": ["error", { "max": 1 }],
-    "quotes": ["error", "single"],
-    "indent": ["error", 4],
-    "linebreak-style": ["error", "unix"],
-    "no-trailing-spaces": "error"
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off"
   }
 } 
