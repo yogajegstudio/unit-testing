@@ -56,17 +56,17 @@ jobs:
 
       - name: Install JS/CSS linters
         run: |
-          npm install --no-save eslint stylelint
+          npm install --no-save eslint stylelint stylelint-config-standard-scss
 
       - name: Run ESLint (JS)
         run: |
           npx eslint '**/*.js' --format stylish || true
           echo "ESLint found code style violations. Please check the report above."
 
-      - name: Run stylelint (CSS)
+      - name: Run stylelint (CSS/SCSS)
         run: |
-          echo "Searching for CSS files..."
-          find . -name "*.css" -not -path "*/node_modules/*" -not -path "*/vendor/*"
+          echo "Searching for CSS/SCSS files..."
+          find . -name "*.css" -o -name "*.scss" -not -path "*/node_modules/*" -not -path "*/vendor/*"
           echo "Running stylelint..."
-          npx stylelint '**/*.css' --allow-empty-input || true
+          npx stylelint '**/*.{css,scss}' --allow-empty-input || true
           echo "Stylelint check completed." 
