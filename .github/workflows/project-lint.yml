@@ -29,11 +29,10 @@ jobs:
         run: |
           composer require --dev wp-coding-standards/wpcs
           phpcs --config-set installed_paths vendor/wp-coding-standards/wpcs
-          phpcs --config-set default_standard WordPress
 
       - name: Run PHPCS
         run: |
-          phpcs --standard=.phpcs.xml --report=full --report-width=120 --colors
+          phpcs --standard=.phpcs.xml --report=full --report-width=120 --colors --debug
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
