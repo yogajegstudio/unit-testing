@@ -25,15 +25,28 @@ jobs:
         run: |
           composer install --no-interaction --prefer-dist --verbose
 
+      - name: Debug PHPCS Installation
+        run: |
+          which phpcs
+          phpcs --version
+          phpcs -i
+          ls -la vendor/bin/
+          ls -la vendor/wp-coding-standards/
+
       - name: Install WordPress Coding Standards
         run: |
           composer require --dev wp-coding-standards/wpcs
           phpcs --config-set installed_paths vendor/wp-coding-standards/wpcs
           phpcs --config-set default_standard WordPress
 
+      - name: Debug PHPCS Configuration
+        run: |
+          phpcs --config-show
+          phpcs -i
+
       - name: Run PHPCS
         run: |
-          phpcs --standard=WordPress --ignore=vendor/*,node_modules/* . --report=full
+          phpcs --standard=WordPress --ignore=vendor/*,node_modules/* . --report=full --debug
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
