@@ -17,6 +17,10 @@ jobs:
           tools: phpcs, phpcbf
           extensions: mbstring, xml
 
+      - name: Allow Composer Plugin
+        run: |
+          composer config --no-plugins allow-plugins.dealerdirect/phpcodesniffer-composer-installer true
+
       - name: Install Composer dependencies
         run: |
           composer install --no-interaction --prefer-dist || true
