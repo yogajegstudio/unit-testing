@@ -43,7 +43,7 @@ jobs:
 
       - name: Install JS/CSS linters
         run: |
-          npm install --no-save eslint eslint-config-wordpress @wordpress/eslint-plugin @wordpress/scripts @babel/eslint-parser eslint-plugin-react eslint-plugin-react-hooks eslint-config-prettier eslint-plugin-prettier prettier
+          npm install --no-save eslint eslint-config-wordpress @wordpress/eslint-plugin @wordpress/scripts @babel/eslint-parser eslint-plugin-react eslint-plugin-react-hooks eslint-config-prettier eslint-plugin-prettier prettier stylelint stylelint-config-standard-scss
 
       - name: Run ESLint (JS)
         run: |
@@ -52,4 +52,4 @@ jobs:
       - name: Run stylelint (CSS/SCSS)
         run: |
           echo "Running stylelint with debug info..."
-          npx stylelint 'src/**/*.{css,scss}' --formatter verbose --max-warnings 0 
+          npx stylelint 'src/**/*.{css,scss}' --formatter verbose --max-warnings 0 --fix 
