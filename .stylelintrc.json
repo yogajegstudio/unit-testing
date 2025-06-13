@@ -5,6 +5,14 @@
     "selector-class-pattern": null,
     "scss/at-import-partial-extension": null,
     "scss/dollar-variable-pattern": null,
-    "scss/selector-no-redundant-nesting-selector": null
+    "scss/selector-no-redundant-nesting-selector": null,
+    "no-extra-semicolons": "error",
+    "declaration-block-trailing-semicolon": "always",
+    "declaration-colon-space-after": "always",
+    "declaration-colon-space-before": "never",
+    "indentation": 4,
+    "selector-list-comma-newline-after": "always-multi-line",
+    "selector-list-comma-space-after": "always-single-line",
+    "selector-list-comma-space-before": "never"
   }
 } 

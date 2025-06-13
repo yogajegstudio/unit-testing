@@ -46,8 +46,7 @@ jobs:
 
       - name: Run PHPCS
         run: |
-          phpcs --standard=WordPress --ignore=vendor/*,node_modules/* . --report=full --report-width=120 || true
-          echo "PHPCS found coding standard violations. Please check the report above."
+          phpcs --standard=WordPress --ignore=vendor/*,node_modules/* . --report=full --report-width=120
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -56,24 +55,13 @@ jobs:
 
       - name: Install JS/CSS linters
         run: |
-          npm install --no-save eslint stylelint stylelint-config-standard-scss
+          npm install --no-save eslint eslint-config-wordpress stylelint stylelint-config-standard-scss
 
       - name: Run ESLint (JS)
         run: |
-          npx eslint '**/*.js' --format stylish || true
-          echo "ESLint found code style violations. Please check the report above."
-
-      - name: Debug SCSS Files
-        run: |
-          echo "Current directory:"
-          pwd
-          echo "Listing all SCSS files:"
-          find . -name "*.scss" -type f
-          echo "Checking specific file:"
-          ls -la src/scss/heading-block.scss || echo "File not found"
+          npx eslint 'src/**/*.js' --format stylish
 
       - name: Run stylelint (CSS/SCSS)
         run: |
           echo "Running stylelint with debug info..."
-          npx stylelint 'src/**/*.{css,scss}' --allow-empty-input --formatter verbose || true
-          echo "Stylelint check completed." 
+          npx stylelint 'src/**/*.{css,scss}' --formatter verbose 
