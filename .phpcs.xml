@@ -25,11 +25,6 @@
         <severity>0</severity>
     </rule>
 
-    <!-- Allow WordPress functions -->
-    <rule ref="WordPress.WP.Functions">
-        <severity>0</severity>
-    </rule>
-
     <!-- Allow WordPress globals -->
     <rule ref="WordPress.WP.GlobalVariablesOverride">
         <severity>0</severity>
