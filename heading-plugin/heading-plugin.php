@@ -32,4 +32,4 @@ function heading_block_editor_assets() {
         array('wp-blocks', 'wp-element', 'wp-editor')
     );
 }
-add_action('enqueue_block_editor_assets', 'heading_block_editor_assets'); 
+add_action('enqueue_block_editor_assets', 'heading_block_editor_assets');

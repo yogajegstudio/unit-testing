@@ -20,6 +20,9 @@ jobs:
           ENABLE_JAVASCRIPT: true
           ENABLE_PHP: true
           ENABLE_JSON: true
+          # PHP Configuration
+          PHP_CS_WORDPRESS: true
+          PHP_CS_FIXER: true
           # Disable all other linters
           ENABLE_ANSIBLE: false
           ENABLE_ARM: false
