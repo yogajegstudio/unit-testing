@@ -23,7 +23,7 @@ jobs:
 
       - name: Install Composer dependencies
         run: |
-          composer install --no-interaction --prefer-dist
+          composer install --no-interaction --prefer-dist --verbose
 
       - name: Install WordPress Coding Standards
         run: |
@@ -33,7 +33,7 @@ jobs:
 
       - name: Run PHPCS
         run: |
-          phpcs --standard=WordPress --ignore=vendor/*,node_modules/* .
+          phpcs --standard=WordPress --ignore=vendor/*,node_modules/* . --report=full
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
