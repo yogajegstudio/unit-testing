@@ -23,7 +23,7 @@ function heading_block_init() {
 add_action('init', 'heading_block_init');
 
 /**
- * Enqueue editor assets
+ * Enqueue heading block editor assets
  */
 function heading_block_editor_assets() {
     wp_enqueue_script(
