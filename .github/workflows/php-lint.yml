@@ -1,0 +1,49 @@
+name: WordPress PHP, JS, and CSS Lint
+
+on: push
+
+jobs:
+  lint:
+    name: Lint Codebase
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.0'
+          tools: phpcs, phpcbf
+          extensions: mbstring, xml
+
+      - name: Install Composer dependencies
+        run: |
+          composer install --no-interaction --prefer-dist || true
+
+      - name: Install WordPress Coding Standards
+        run: |
+          composer require --dev wp-coding-standards/wpcs
+          phpcs --config-set installed_paths vendor/wp-coding-standards/wpcs
+          phpcs --config-set default_standard WordPress
+
+      - name: Run PHPCS
+        run: |
+          phpcs --standard=WordPress --ignore=vendor/*,node_modules/* .
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install JS/CSS linters
+        run: |
+          npm install --no-save eslint stylelint
+
+      - name: Run ESLint (JS)
+        run: |
+          npx eslint '**/*.js'
+
+      - name: Run stylelint (CSS)
+        run: |
+          npx stylelint '**/*.css' 
