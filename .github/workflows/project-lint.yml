@@ -43,7 +43,7 @@ jobs:
 
       - name: Install JS/CSS linters
         run: |
-          npm install --no-save eslint eslint-config-wordpress @wordpress/eslint-plugin @wordpress/scripts @babel/eslint-parser eslint-plugin-react eslint-plugin-react-hooks eslint-config-prettier eslint-plugin-prettier prettier stylelint stylelint-config-standard-scss
+          npm install --no-save eslint eslint-config-wordpress @wordpress/eslint-plugin @wordpress/scripts @babel/eslint-parser eslint-plugin-react eslint-plugin-react-hooks eslint-config-prettier eslint-plugin-prettier prettier stylelint@^15.0.0 stylelint-config-standard-scss@^11.0.0
 
       - name: Run ESLint (JS)
         run: |

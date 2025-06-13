@@ -1,28 +1,5 @@
 {
   "extends": [
     "stylelint-config-standard-scss"
-  ],
-  "rules": {
-    "at-rule-no-unknown": null,
-    "scss/at-rule-no-unknown": true,
-    "no-descending-specificity": null,
-    "selector-class-pattern": null,
-    "scss/at-import-partial-extension": null,
-    "scss/dollar-variable-pattern": null,
-    "scss/selector-no-redundant-nesting-selector": null,
-    "no-extra-semicolons": "error",
-    "declaration-block-trailing-semicolon": "always",
-    "declaration-colon-space-after": "always",
-    "declaration-colon-space-before": "never",
-    "indentation": 4,
-    "selector-list-comma-newline-after": "always-multi-line",
-    "selector-list-comma-space-after": "always-single-line",
-    "selector-list-comma-space-before": "never",
-    "selector-list-comma-newline-before": "never-multi-line",
-    "selector-max-empty-lines": 0,
-    "block-closing-brace-empty-line-before": "never",
-    "block-closing-brace-newline-after": "always",
-    "block-opening-brace-newline-after": "always",
-    "block-opening-brace-space-before": "always"
-  }
+  ]
 } 
