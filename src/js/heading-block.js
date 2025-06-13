@@ -14,7 +14,7 @@ registerBlockType('heading-block/heading', {
         },
         level: {
             type: 'number',
-            default: 2;
+            default: 2
         }
     },
     edit: ({ attributes, setAttributes }) => {

@@ -1,1 +1,1 @@
-import './heading-block'; 
+import './heading-block';
