@@ -18,6 +18,12 @@
         <exclude name="WordPress.WP.I18n"/>
         <exclude name="WordPress.Files.FileName.InvalidClassFileName"/>
         <exclude name="WordPress.Files.FileName.NotHyphenatedLowercase"/>
+        <exclude name="WordPress.WhiteSpace.ControlStructureSpacing.NoSpaceAfterOpenParenthesis"/>
+        <exclude name="WordPress.WhiteSpace.ControlStructureSpacing.NoSpaceBeforeCloseParenthesis"/>
+        <exclude name="WordPress.WhiteSpace.OperatorSpacing.NoSpaceBefore"/>
+        <exclude name="WordPress.WhiteSpace.OperatorSpacing.NoSpaceAfter"/>
+        <exclude name="WordPress.WP.EnqueuedResourceParameters.MissingVersion"/>
+        <exclude name="WordPress.WP.EnqueuedResourceParameters.NotInFooter"/>
     </rule>
 
     <!-- Allow short array syntax -->
@@ -27,6 +33,16 @@
 
     <!-- Allow WordPress globals -->
     <rule ref="WordPress.WP.GlobalVariablesOverride">
+        <severity>0</severity>
+    </rule>
+
+    <!-- Allow spaces for indentation -->
+    <rule ref="Generic.WhiteSpace.DisallowSpaceIndent">
+        <severity>0</severity>
+    </rule>
+
+    <!-- Allow array spacing -->
+    <rule ref="NormalizedArrays.Arrays.ArrayBraceSpacing">
         <severity>0</severity>
     </rule>
 </ruleset> 

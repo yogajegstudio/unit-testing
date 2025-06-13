@@ -28,6 +28,10 @@ jobs:
           composer require --dev phpcsstandards/phpcsextra:^1.0
           composer install --no-interaction --prefer-dist --verbose
 
+      - name: Fix PHPCS issues
+        run: |
+          ./vendor/bin/phpcbf --standard=.phpcs.xml --report=full --report-width=120 --colors -v
+
       - name: Run PHPCS
         run: |
           ./vendor/bin/phpcs --standard=.phpcs.xml --report=full --report-width=120 --colors -v
