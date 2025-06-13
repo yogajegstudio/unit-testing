@@ -14,7 +14,6 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.0'
-          tools: phpcs, phpcbf
           extensions: mbstring, xml
 
       - name: Allow Composer Plugin
@@ -23,18 +22,15 @@ jobs:
 
       - name: Install Composer dependencies
         run: |
+          composer require --dev squizlabs/php_codesniffer:^3.7
           composer require --dev wp-coding-standards/wpcs:^3.0
           composer require --dev phpcsstandards/phpcsutils:^1.0
           composer require --dev phpcsstandards/phpcsextra:^1.0
           composer install --no-interaction --prefer-dist --verbose
 
-      - name: Install WordPress Coding Standards
-        run: |
-          phpcs --config-set installed_paths vendor/wp-coding-standards/wpcs
-
       - name: Run PHPCS
         run: |
-          phpcs --standard=.phpcs.xml --report=full --report-width=120 --colors -v
+          ./vendor/bin/phpcs --standard=.phpcs.xml --report=full --report-width=120 --colors -v
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
