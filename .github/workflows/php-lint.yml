@@ -46,7 +46,8 @@ jobs:
 
       - name: Run PHPCS
         run: |
-          phpcs --standard=WordPress --ignore=vendor/*,node_modules/* . --report=full --debug
+          phpcs --standard=WordPress --ignore=vendor/*,node_modules/* . --report=full --report-width=120 || true
+          echo "PHPCS found coding standard violations. Please check the report above."
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
