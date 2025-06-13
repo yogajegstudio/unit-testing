@@ -8,10 +8,60 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Run Super-Linter
-        uses: github/super-linter@v4
+        uses: github/super-linter@v5
         env:
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Enable only specific linters
+          ENABLE_CSS: true
+          ENABLE_JAVASCRIPT: true
+          ENABLE_PHP: true
+          ENABLE_JSON: true
+          # Disable all other linters
+          ENABLE_ANSIBLE: false
+          ENABLE_ARM: false
+          ENABLE_BASH: false
+          ENABLE_CLANG: false
+          ENABLE_CLOJURE: false
+          ENABLE_COFFEESCRIPT: false
+          ENABLE_CPP: false
+          ENABLE_CSHARP: false
+          ENABLE_DART: false
+          ENABLE_DOCKERFILE: false
+          ENABLE_EDITORCONFIG: false
+          ENABLE_ENV: false
+          ENABLE_GITHUB_ACTIONS: false
+          ENABLE_GO: false
+          ENABLE_GROOVY: false
+          ENABLE_HTML: false
+          ENABLE_JAVA: false
+          ENABLE_JSCPD: false
+          ENABLE_JSX: false
+          ENABLE_KOTLIN: false
+          ENABLE_KUBERNETES: false
+          ENABLE_LATEX: false
+          ENABLE_LUA: false
+          ENABLE_MARKDOWN: false
+          ENABLE_OPENAPI: false
+          ENABLE_PERL: false
+          ENABLE_POWERSHELL: false
+          ENABLE_PROTOBUF: false
+          ENABLE_PYTHON: false
+          ENABLE_R: false
+          ENABLE_RAKU: false
+          ENABLE_RUBY: false
+          ENABLE_RUST: false
+          ENABLE_SCALAFMT: false
+          ENABLE_SHELL_SHFMT: false
+          ENABLE_SNAKEMAKE: false
+          ENABLE_STATES: false
+          ENABLE_SQL: false
+          ENABLE_SVELTE: false
+          ENABLE_TERRAFORM: false
+          ENABLE_TSX: false
+          ENABLE_TYPESCRIPT: false
+          ENABLE_XML: false
+          ENABLE_YAML: false
